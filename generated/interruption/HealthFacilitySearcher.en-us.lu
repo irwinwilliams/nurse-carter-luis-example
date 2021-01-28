@@ -1,0 +1,43 @@
+
+> LUIS application information
+> !# @app.versionId = 0.1
+> !# @app.culture = en-us
+> !# @app.luis_schema_version = 3.2.0
+
+
+> # Intent definitions
+
+# cancel
+- cancel
+- please stop
+- nevermind
+
+
+# help
+- send help
+- please help
+- help me
+
+
+# facility
+- facility
+- health facility
+- health centre
+- hospital
+- I'm looking for a facility
+
+
+> # Entity definitions
+
+
+> # PREBUILT Entity definitions
+
+
+> # Phrase list definitions
+
+
+> # List entities
+
+> # RegEx entities
+
+

@@ -1,0 +1,166 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "$designer": {
+      "name": "HealthFacilitySearcher",
+      "description": "Finds health facilities and their services.",
+      "id": "yTHjUl"
+    }
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnConversationUpdateActivity",
+      "$designer": {
+        "id": "376720",
+        "name": "Welcome User"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.Foreach",
+          "$designer": {
+            "id": "518944",
+            "name": "Loop: for each item"
+          },
+          "itemsProperty": "turn.Activity.membersAdded",
+          "actions": [
+            {
+              "$kind": "Microsoft.IfCondition",
+              "$designer": {
+                "id": "641773",
+                "name": "Branch: if/else"
+              },
+              "condition": "string(dialog.foreach.value.id) != string(turn.Activity.Recipient.id)",
+              "actions": [
+                {
+                  "$kind": "Microsoft.SendActivity",
+                  "$designer": {
+                    "id": "859266",
+                    "name": "Send a response"
+                  },
+                  "activity": "${SendActivity_Welcome()}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "paT4ee",
+        "name": "facility"
+      },
+      "intent": "facility",
+      "actions": [
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "NuBMOh"
+          },
+          "activityProcessed": true,
+          "dialog": "getFacility"
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "YKdj2I",
+        "name": "help"
+      },
+      "intent": "help",
+      "actions": [
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "c0FT5f"
+          },
+          "activityProcessed": true,
+          "dialog": "getHelp"
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "7gjPvM",
+        "name": "cancel"
+      },
+      "intent": "cancel",
+      "actions": [
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "iVev70"
+          },
+          "activityProcessed": true,
+          "dialog": "cancel"
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "2IUNZq",
+        "name": "cancel"
+      },
+      "intent": "cancel",
+      "condition": "=#Cancel.Score >= 0.8",
+      "actions": [
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "QMe7Ji"
+          },
+          "activityProcessed": true,
+          "dialog": "cancel"
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "KglsjF",
+        "name": "help"
+      },
+      "intent": "help",
+      "condition": "=#Help.Score > 0.5",
+      "actions": [
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "UyJsqa"
+          },
+          "activityProcessed": true,
+          "dialog": "getHelp"
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "pR81wL",
+        "name": "facility"
+      },
+      "intent": "facility",
+      "condition": "=#Facility.Score >= 0.8",
+      "actions": [
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "lePKft"
+          },
+          "activityProcessed": true,
+          "dialog": "getFacility"
+        }
+      ]
+    }
+  ],
+  "$schema": "https://raw.githubusercontent.com/microsoft/BotFramework-Composer/stable/Composer/packages/server/schemas/sdk.schema",
+  "generator": "HealthFacilitySearcher.lg",
+  "id": "HealthFacilitySearcher",
+  "recognizer": "HealthFacilitySearcher.lu.qna"
+}

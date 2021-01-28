@@ -1,0 +1,12 @@
+{
+    "luis": {
+        "HealthFacilitySearcher_en_us_lu": {
+            "appId": "95363d68-0667-42b3-a806-225a3e25d79b",
+            "version": "0.7"
+        },
+        "getFacility_en_us_lu": {
+            "appId": "7289be81-7141-4400-a9bd-99cf1eb3e5db",
+            "version": "0.2"
+        }
+    }
+}

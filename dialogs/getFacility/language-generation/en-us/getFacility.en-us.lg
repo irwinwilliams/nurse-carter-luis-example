@@ -1,0 +1,29 @@
+[import](common.lg)
+
+# SendActivity_uzrAnN()
+- Let's find a facility
+# TextInput_Prompt_fFq8hj()
+[Activity
+    Text = What facility are you looking for?
+    SuggestedActions = help | cancel
+]
+# SendActivity_afAj4K()
+- OK, so we're looking for health facility info based on '${user.facility}'
+# SendActivity_NpvEzQ()
+[ThumbnailCard
+    title = ${dialog.facility.name}
+    text = Available services include ${dialog.facility.allServices}
+    image = ${dialog.facility.icon}
+]
+# TextInput_UnrecognizedPrompt_fFq8hj()
+- I'm sorry, I do not understand '${this.value}'. Please specify a query with 5 or more characters.
+# TextInput_InvalidPrompt_fFq8hj()
+- Sorry, '${this.value}' is not valid. Please provide a query with at least 5 characters.
+# SendActivity_gfK87b()
+- I'm sorry, I wasn't able to perform your query successfully.
+
+# DescribeFacility(facility)
+- IF: ${facility.uniqueServices.count >= 10}
+    - ${facility.name} provides a lot of services!
+- ELSE:
+    - ${facility.allServices} are available

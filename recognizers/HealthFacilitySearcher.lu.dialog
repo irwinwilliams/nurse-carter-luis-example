@@ -1,0 +1,8 @@
+{
+  "$kind": "Microsoft.MultiLanguageRecognizer",
+  "id": "LUIS_HealthFacilitySearcher",
+  "recognizers": {
+    "en-us": "HealthFacilitySearcher.en-us.lu",
+    "": "HealthFacilitySearcher.en-us.lu"
+  }
+}

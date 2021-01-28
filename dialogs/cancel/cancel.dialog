@@ -1,0 +1,39 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "Rlnarg",
+    "name": "cancel",
+    "description": "Cancel's the current dialog."
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "description": "",
+        "id": "aLSmtV"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "152ggm"
+          },
+          "activity": "${SendActivity_152ggm()}"
+        },
+        {
+          "$kind": "Microsoft.CancelAllDialogs",
+          "$designer": {
+            "id": "S73Nbx"
+          },
+          "activityProcessed": true
+        }
+      ]
+    }
+  ],
+  "generator": "cancel.lg",
+  "recognizer": "cancel.lu.qna",
+  "id": "cancel"
+}

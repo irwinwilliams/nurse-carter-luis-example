@@ -1,0 +1,107 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "055R7n",
+    "name": "getFacility",
+    "description": ""
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "description": "",
+        "id": "vFGKfV"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "uzrAnN"
+          },
+          "activity": "${SendActivity_uzrAnN()}"
+        },
+        {
+          "$kind": "Microsoft.TextInput",
+          "$designer": {
+            "id": "fFq8hj"
+          },
+          "disabled": false,
+          "maxTurnCount": 3,
+          "alwaysPrompt": false,
+          "allowInterruptions": true,
+          "prompt": "${TextInput_Prompt_fFq8hj()}",
+          "unrecognizedPrompt": "${TextInput_UnrecognizedPrompt_fFq8hj()}",
+          "invalidPrompt": "${TextInput_InvalidPrompt_fFq8hj()}",
+          "defaultValueResponse": "",
+          "property": "user.facility",
+          "validations": [
+            "length(this.value) > 4"
+          ]
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "afAj4K"
+          },
+          "activity": "${SendActivity_afAj4K()}"
+        },
+        {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "HSfZwt"
+          },
+          "method": "GET",
+          "url": "https://nursecarter.azurewebsites.net/api/Facility/${user.facility}",
+          "resultProperty": "dialog.api_response",
+          "responseType": "json"
+        },
+        {
+          "$kind": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "IdE0h7"
+          },
+          "condition": "=dialog.api_response.statusCode == 200",
+          "actions": [
+            {
+              "$kind": "Microsoft.SetProperty",
+              "$designer": {
+                "id": "vR9dvG"
+              },
+              "property": "dialog.facility",
+              "value": "=dialog.api_response.content"
+            },
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "NpvEzQ"
+              },
+              "activity": "${SendActivity_NpvEzQ()}"
+            }
+          ],
+          "elseActions": [
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "gfK87b"
+              },
+              "activity": "${SendActivity_gfK87b()}"
+            },
+            {
+              "$kind": "Microsoft.DeleteProperty",
+              "$designer": {
+                "id": "vccJGv"
+              },
+              "property": "dialog.api_response"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "generator": "getFacility.lg",
+  "recognizer": "getFacility.lu.qna",
+  "id": "getFacility"
+}

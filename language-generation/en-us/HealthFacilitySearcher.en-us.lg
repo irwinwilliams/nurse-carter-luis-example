@@ -1,0 +1,8 @@
+[import](common.lg)
+
+# SendActivity_Welcome()
+- Hi there, I can help you find health facilities. Just type FACILITY to get started 
+- Hey, looking for health facilities? Just send me FACILITY
+- Hello, send FACILITY to search for health facilities please
+- Jolly good day to you, too.
+

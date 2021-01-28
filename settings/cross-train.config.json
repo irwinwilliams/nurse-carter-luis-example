@@ -1,0 +1,16 @@
+{
+  "HealthFacilitySearcher.en-us": {
+    "rootDialog": true,
+    "triggers": {
+      "facility": [
+        "getFacility.en-us"
+      ],
+      "help": [
+        "getHelp.en-us"
+      ],
+      "cancel": [
+        "cancel.en-us"
+      ]
+    }
+  }
+}
